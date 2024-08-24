@@ -1,6 +1,6 @@
 import numpy as np
 from flask import Flask, render_template
-from flask_socketio import SocketIO, send, emit
+from flask_socketio import SocketIO, emit
 import solver
 
 
