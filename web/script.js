@@ -27,7 +27,7 @@ $(document).keyup(function(event){
         $("input").val("")
         $("input").prop("disabled", false)
         $(".locked").removeClass("locked")
-        $("#text").html("press <span>Enter</span> to solve")
+        $("#text").html("press <span>ENTER</span> to solve")
     }
 });
 
