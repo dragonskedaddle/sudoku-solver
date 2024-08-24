@@ -1,35 +1,47 @@
-let spaceActive = false
-$(document).keyup(function(event){
-    if (event.keyCode === 13){
-        let board = []
-        let textboxes = []
-        for(let i=0;i<81;i++){
-            let value = parseInt($($($("#board").children()[i]).children()[0]).val())
-            $($($("#board").children()[i]).children()[0]).prop("disabled", true)
-            board.push(value)
-            textboxes.push($($($("#board").children()[i]).children()[0]))
-            if(value){$($("#board").children()[i]).addClass("locked")};
-        }
-
-        eel.send_to_solve(board)((data)=>{
-            console.log(data)
-            let counter = 0
-            for(let i=0;i<81;i++){
-                if(counter==9){counter=0}
-                $($($("#board").children()[i]).children()[0]).val(data[i])
-                counter++
+let active = false
+$("#execute").click(function(event){
+    if ($("#function-switcher").text() === "SOLVE"){
+        if (active){
+            $("input").val("")
+            $("input").prop("disabled", false)
+            $(".locked").removeClass("locked")
+            $("#execute").html("execute")
+            active = false
+        } else {
+            let board = []
+            let textboxes = []
+            for(let i = 0; i < 81; i++){
+                let value = parseInt($($($("#board").children()[i]).children()[0]).val())
+                $($($("#board").children()[i]).children()[0]).prop("disabled", true)
+                board.push(value)
+                textboxes.push($($($("#board").children()[i]).children()[0]))
+                if(value){$($("#board").children()[i]).addClass("locked")};
             }
-            $("#text").html("press <span>SPACE</span> to reset")
-            spaceActive = true
-        })
-    }
-    if (event.keyCode === 32 && spaceActive){
-        $("input").val("")
-        $("input").prop("disabled", false)
-        $(".locked").removeClass("locked")
-        $("#text").html("press <span>ENTER</span> to solve")
-    }
+
+            eel.send_to_solve(board)((data)=>{
+                console.log(data)
+                let counter = 0
+                for(let i = 0; i < 81; i++){
+                    if(counter==9){counter=0}
+                    $($($("#board").children()[i]).children()[0]).val(data[i])
+                    counter++
+                }
+                $("#execute").html("reset")
+                active = true
+            })
+        }
+    } else {
+        
+    }   
 });
+
+$("#function-switcher").on("click",function(){
+    if ($("#function-switcher").text() === "SOLVE"){
+        $("#function-switcher").text("GENERATE") 
+    } else {
+        $("#function-switcher").text("SOLVE") 
+    }
+})
 
 function randomInt(min, max){ // The maximum is exclusive and the minimum is inclusive
     min = Math.ceil(min);

@@ -11,12 +11,18 @@ html, body{
     background-color: #121212;
     height: 100vh;
 }
-#board{
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 
+.main-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+
+    height: 100%;
+    padding: 2.5rem;
+}
+
+#board{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -38,6 +44,8 @@ html, body{
 .locked{
     background-color: #2b2b2b;
 }
+
+/*For the extra thick borders*/
 #board > span:nth-child(3n+0){
     border-right: 3px solid #e3e3e3;
 }
@@ -50,6 +58,7 @@ html, body{
 #board > span:nth-child(n+1):nth-child(-n+9){
     border-top: 3px solid #e3e3e3;
 }
+
 #board > span > input[type=text]{
     background-color: transparent;
     padding: .5rem;
@@ -63,15 +72,27 @@ html, body{
 #board > span:focus-within{
     background-color: #5c5c5c;
 }
+
 p{
     text-align: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     width: 75%;
-    position: fixed;
-    left: 50%;
-    bottom: 1rem;
-    margin-left: -37.5%;
 }
 p > span{
+    font-size: 1.5rem;
     font-weight: bold;
+}
+p > select:focus{
+    background-color: transparent;
+}
+
+button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+button:active{
+    opacity: .7;
 }
