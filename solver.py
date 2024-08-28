@@ -3,7 +3,7 @@ import random
 import operator as op
 
 class sudoku:
-    def __init__(self, board, num_holes):
+    def __init__(self, board, num_holes = random.randint(25, 55)):
         self.board = board
         self.num_holes = num_holes
 

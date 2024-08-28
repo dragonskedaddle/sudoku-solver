@@ -86,6 +86,12 @@ p > select:focus{
     background-color: transparent;
 }
 
+.button-group{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
 button{
     background-color: transparent;
     outline: none;
@@ -95,4 +101,27 @@ button{
 }
 button:active{
     opacity: .7;
+}
+button:disabled{
+    opacity: .7;
+}
+
+@media screen and (max-width: 1200px){
+    html, body{
+        overflow: auto;
+        background-color: #121212;
+        height: auto;
+    }
+    .main-container{
+        height: 100%;
+        width: 100%;
+
+        gap: 2rem;
+        padding: 2.5rem 1rem;
+    }
+    #board{
+        width: 100%;
+        height: auto;
+        flex-grow: 1;
+    }
 }
