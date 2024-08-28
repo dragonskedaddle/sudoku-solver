@@ -38,7 +38,7 @@ $("#execute").click(function(){
     })
 
     $("#reset").prop("disabled", false) // enables reset button
-    $("#execute").prop("disabled", true) // disables execute button
+    $("#execute").prop("disabled", true) // disables the execute button
 });
 
 $("#reset").click(function(){
