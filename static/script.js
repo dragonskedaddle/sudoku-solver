@@ -27,7 +27,7 @@ $("#execute").click(function(){
 
         for(let i = 0; i < 81; i++){
             if(counter==9){counter=0}
-            if(data[i] === 0){
+            if(data[i] === 0){ // sets board to data
                 $($($("#board").children()[i]).children()[0]).val(null)
             } else{
                 $($($("#board").children()[i]).children()[0]).val(data[i])
@@ -38,12 +38,14 @@ $("#execute").click(function(){
     })
 
     $("#reset").prop("disabled", false) // enables reset button
+    $("#execute").prop("disabled", true) // disables execute button
 });
 
 $("#reset").click(function(){
     $("input").val("") // clears all text boxes
     $("input").prop("disabled", false) // renables all text boxes
     $(".locked").removeClass("locked") // removes all locked clases
+    $("#execute").prop("disabled", false) // enables execute button
     $("#reset").prop("disabled", true) // disables button after use
 })
 
