@@ -38,14 +38,12 @@ $("#execute").click(function(){
     })
 
     $("#reset").prop("disabled", false) // enables reset button
-    $("#execute").prop("disabled", true) // disables the execute button
 });
 
 $("#reset").click(function(){
     $("input").val("") // clears all text boxes
     $("input").prop("disabled", false) // renables all text boxes
     $(".locked").removeClass("locked") // removes all locked clases
-    $("#execute").prop("disabled", false) // enables execute button
     $("#reset").prop("disabled", true) // disables button after use
 })
 
